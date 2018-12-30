@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block title %}
+북마크 상세보기
+{% end block%}
+
+{% block content%}
+{% if error%}
+<h3 style="color:red">{{error}}</h3>
+{% end if %}
+
+<form action="" method="POST">
+{%csrf_token %}
+<table>
+{{f.as_table}}
+</table>
+<input type="submit" value="회원가입">
+</form>
+{% end block%}

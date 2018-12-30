@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>답변 등록</h1>
+<!-- error변수에 값이 있는 경우 값을 출력 -->
+<!-- GET요청으로 HTML파일이 error변수를 못받은경우->none값이 저장됨
+POST 요청 중 유효성 검사를 실패한경우 ->str타입의 값이 저장됨 -->
+{% if error %}
+<p style="color:redzzc">{{ error }}</p>
+{% end if %}
+<form action="" method="POST">
+{% csrf_token%}
+<table>
+{{f.as_table}}
+</table>
+<input type="submit" value="답변등록">
+</form>
+</body>
+</html>

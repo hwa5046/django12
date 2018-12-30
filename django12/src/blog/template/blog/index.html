@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block title %}
+게시판 - {{obj.headline}}
+{% endblock %}
+{%block content %}
+<!-- 이전페이지, 다음페이지 버튼 생성 -->
+<!-- page_obj: 페이지 관련 객체
+page_obj.has_previous : 현재페이지 기준 이전페이지가 있는지 확인하는 함수
+page_obj.has_next: 현재 페이지 기준 다음페이지가 있는지 확인하는 함수 -->
+<h3>{{obj.headline}}</h3>
+<p>{{obj.author}}/{{obj.pub_date}}</p>
+<!-- 다운로드 받을 수 있는 파일 링크 -->
+{% for f in obj.postfile_set.all%}
+<a href="{{f.file.url}}" download>첨부파일</a>
+{% endfor %}
+
+<!-- 글에 첨부된 이미지 출력 -->
+{% for i in obj.postimage_set.all%}
+<img src="{{i.image.url}}" width="30%"><br>
+ 
+{% endfor %}
+
+<pre>{{obj.content}} </pre>
+{% endblock %}

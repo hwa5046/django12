@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>django로 만드는 홈페이지{% block title%}{% end block%}</title>
+</head>
+<body>
+<!-- 배너 -->
+<h2>나만의 홈페이지</h2>
+<a href="{% url 'vote:index'%}">설문조사</a>
+<a href="/">북마크</a>
+<br>
+<!-- 로그인 상태에 따른 처리. user: 사용자 요청정보중 현재 로그인되어 있는 User 객체가 담긴 변수
+user.is_authenticated: 사용자가 현재 로그인이 되어있는지 여부를 파악(True, False) -->
+{% if user.is_authenticated %}
+<!--  로그인이 된 경우 -->
+{{user.last_name}} {{user.first_name}}님 환영합니다!
+<a href="{% url 'login:signout' %}">로그아웃</a>
+{%else %}
+<!-- 로그인이 안된경우 -->
+<a href="{% url 'login:signin'%}">로그인</a>
+<a href="{% url 'login: signup'%}">회원가입</a>
+{% end if%}
+<hr>
+{% block content%}
+{% end block %}
+<hr>
+<p>서울시 종로구</p>
+<p>010-1234-5678</p>
+</body>
+</html>

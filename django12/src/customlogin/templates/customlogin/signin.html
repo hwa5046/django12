@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block title %}
+북마크 상세보기
+{% end block%}
+
+{% block content%}
+{% if error%}
+<p>{{error}}</p>
+{% end if %}
+
+<form action="" method="POST">
+{% csrf_token%}
+<input type="hidden" name="nexturl" value="{{nexturl}}">
+<table>
+{{f.as_table}}
+</table>
+<input type="submit" value="로그인">
+</form>
+<a href="{% url 'login:signup'%}">회원가입</a>
+<br>
+<a href="{% url 'social:begin' 'google-plus'%}">Google로 로그인하기</a>
+{% end block%}
